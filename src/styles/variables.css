@@ -1,0 +1,32 @@
+/* All colours, fonts and sizes live here, so the theme can change in one place.
+   Palette inspired by Bridge 170 (equestrian): off-white paper, black serif titles, grey text. */
+:root {
+  --bg: #f8f7f5; /* Page background: off-white, like paper. */
+  --bg-alt: #f0eeea; /* Alternate sections: a touch darker. */
+  --white: #ffffff;
+
+  --accent: #1b1b1b; /* Buttons, active links, titles: near black. */
+  --accent-dark: #4a4a4a; /* Hover state of buttons. */
+  --accent-light: #e9e5df; /* Light warm grey for small backgrounds. */
+
+  --dark: #1b1b1b; /* Headings and footer. */
+  --text: #5c5c5c; /* Body text: soft grey, like Bridge. */
+  --text-muted: #8e8e8e;
+  --border: #dedad4;
+
+  /* Status colours used by badges. */
+  --status-yellow: #d9a93f;
+  --status-green: #5f8a5a;
+  --status-red: #b94a3e;
+  --status-grey: #a39b94;
+
+  --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+
+  --radius: 4px;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.1);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* Smooth "ease-out" used by all transitions. */
+  --nav-height: 84px;
+  --max-width: 1200px;
+}

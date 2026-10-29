@@ -1,0 +1,349 @@
+/* ---------- Hero slider ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #3a3a3a; /* Shown if the photos cannot load. */
+  color: var(--white);
+  overflow: hidden;
+}
+
+/* All slides are stacked; only the active one is visible. */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+
+/* Active slide fades in and slowly zooms (Ken Burns effect). */
+.hero-slide.active {
+  opacity: 1;
+  animation: kenBurns 8s linear both;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+/* Dark shade on top of the photo so the white text is readable. */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-content {
+  position: relative;
+  padding-top: var(--nav-height);
+}
+
+.hero .hero-eyebrow {
+  color: var(--white);
+}
+
+.hero-title {
+  color: var(--white);
+  font-size: clamp(2.8rem, 9vw, 6.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.hero-title em {
+  display: block;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.45em;
+  margin-top: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.hero-dot.active {
+  background: var(--white);
+  transform: scale(1.2);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 110px 0;
+  background: var(--bg);
+}
+
+.section-alt {
+  background: var(--white);
+}
+
+/* Big uppercase serif title with grey text under it, like Bridge's "ABOUT US". */
+.section-heading {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 70px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.section-heading p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--text);
+}
+
+/* ---------- About us cards ---------- */
+.service-grid {
+  display: grid;
+  gap: 56px 40px;
+}
+
+@media (min-width: 768px) {
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  text-align: center;
+  text-decoration: none;
+}
+
+/* The brush-mask.svg gives the photo rough, painted edges. */
+.brush-frame {
+  overflow: hidden;
+  -webkit-mask: url('/brush-mask.svg') center / 100% 100% no-repeat;
+  mask: url('/brush-mask.svg') center / 100% 100% no-repeat;
+}
+
+.brush-frame img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--bg-alt);
+  transition: transform 1.2s var(--ease);
+}
+
+.service-card:hover .brush-frame img {
+  transform: scale(1.08);
+}
+
+.service-card h3 {
+  margin: 34px 0 12px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  transition: color 0.3s var(--ease);
+}
+
+.service-card:hover h3 {
+  color: var(--text-muted);
+}
+
+.service-card p {
+  margin: 0 auto;
+  max-width: 320px;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* ---------- Quote on a photo ---------- */
+.quote {
+  position: relative;
+  padding: 130px 0;
+  background-color: #3a3a3a;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax: the photo stays still while you scroll. */
+  text-align: center;
+  color: var(--white);
+}
+
+.quote-content {
+  position: relative;
+}
+
+.quote blockquote {
+  margin: 0 auto 20px;
+  max-width: 820px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1.4;
+}
+
+.quote-author {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* ---------- Meet our horses ---------- */
+.horse-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .horse-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+.horse-card {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Black and white by default, colour on hover. */
+.horse-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: var(--bg-alt);
+  filter: grayscale(100%);
+  transition: filter 0.8s var(--ease), transform 1.2s var(--ease);
+}
+
+.horse-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.06);
+}
+
+.horse-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 16px 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  background: var(--bg);
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-number {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.stat-label {
+  margin: 12px 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Closing CTA ---------- */
+.cta {
+  position: relative;
+  padding: 150px 0;
+  background-color: #3a3a3a;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  color: var(--white);
+}
+
+.cta-content {
+  position: relative;
+}
+
+.cta h2 {
+  color: var(--white);
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cta-text {
+  margin: 0 0 40px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+/* Phones do not support fixed backgrounds well, so scroll normally there. */
+@media (max-width: 768px) {
+  .quote,
+  .cta {
+    background-attachment: scroll;
+  }
+}

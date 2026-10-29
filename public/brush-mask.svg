@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="none">
+  <!-- Used as a CSS mask: white = visible. The turbulence filter makes the edges
+       rough, so photos look painted with a brush (like the Bridge theme). -->
+  <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035 0.06" numOctaves="4" seed="7" />
+    <feDisplacementMap in="SourceGraphic" scale="22" />
+  </filter>
+  <rect x="14" y="14" width="372" height="272" fill="#fff" filter="url(#rough)" />
+</svg>

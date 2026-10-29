@@ -1,0 +1,117 @@
+.tournament-layout {
+  display: grid;
+  gap: 40px;
+}
+
+/* Lets the seat map scroll inside its box instead of making the page wider. */
+.tournament-layout > * {
+  min-width: 0;
+}
+
+@media (min-width: 1000px) {
+  .tournament-layout {
+    grid-template-columns: 300px 1fr;
+    align-items: start;
+  }
+
+  .tournament-info {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.tournament-info {
+  padding: 26px;
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.tournament-description {
+  margin: 22px 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.seat-notice {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  background: var(--bg-alt);
+  border-left: 2px solid var(--dark);
+  font-size: 0.85rem;
+}
+
+/* Bar fixed at the bottom of the screen when a seat is selected. */
+.checkout-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 150;
+  padding: 16px 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+  animation: slideUp 0.4s var(--ease) both;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.checkout-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.checkout-seat {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--dark);
+}
+
+/* Ticket shape with cut-outs on the sides. */
+.mini-ticket {
+  position: relative;
+  padding: 24px 28px;
+  border: 1px dashed var(--dark);
+  background: var(--bg);
+  text-align: center;
+}
+
+.mini-ticket h3 {
+  margin: 8px 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.mini-ticket::before,
+.mini-ticket::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px dashed var(--dark);
+}
+
+.mini-ticket::before {
+  left: -12px;
+}
+
+.mini-ticket::after {
+  right: -12px;
+}

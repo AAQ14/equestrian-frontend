@@ -1,0 +1,109 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 34px;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 2px; /* Bridge uses square-ish buttons. */
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+/* Fill that sweeps in from the left on hover. */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
+}
+
+.btn:hover:not(:disabled)::before {
+  transform: scaleX(1);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Black button, turns dark grey on hover. */
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn-primary::before {
+  background: var(--accent-dark);
+}
+
+/* Outlined black button, fills on hover. */
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline::before {
+  background: var(--accent);
+}
+
+.btn-outline:hover:not(:disabled) {
+  color: var(--white);
+}
+
+/* White outline for dark photos, fills white on hover. */
+.btn-light {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-light::before {
+  background: var(--white);
+}
+
+.btn-light:hover:not(:disabled) {
+  color: var(--dark);
+}
+
+.btn-danger {
+  background: var(--status-red);
+  color: var(--white);
+}
+
+.btn-danger::before {
+  background: var(--dark);
+}
+
+/* Small spinning circle shown while loading. */
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

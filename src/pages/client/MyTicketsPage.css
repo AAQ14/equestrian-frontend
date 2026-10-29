@@ -1,0 +1,126 @@
+.ticket-list {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .ticket-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* A paper ticket: main part + stub, separated by a dashed "tear" line. */
+.ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  animation: fadeUp 0.6s var(--ease) both;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.ticket:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.ticket-main {
+  padding: 24px;
+}
+
+.ticket-main h3 {
+  margin: 8px 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ticket-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 20px 12px;
+  border-left: 2px dashed var(--border);
+  background: var(--bg);
+  text-align: center;
+}
+
+/* Half circles cut out of the tear line, top and bottom. */
+.ticket-stub::before,
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  left: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.ticket-stub::before {
+  top: -12px;
+}
+
+.ticket-stub::after {
+  bottom: -12px;
+}
+
+.stub-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stub-seat {
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--dark);
+}
+
+.stub-price {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+.stub-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.stub-actions .btn {
+  padding: 8px 6px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+}
+
+.ticket-cancelled {
+  opacity: 0.6;
+}
+
+.ticket-cancelled .stub-seat {
+  text-decoration: line-through;
+}
+
+@media (max-width: 480px) {
+  .ticket {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-stub {
+    border-left: none;
+    border-top: 2px dashed var(--border);
+  }
+
+  .ticket-stub::before,
+  .ticket-stub::after {
+    display: none;
+  }
+}
