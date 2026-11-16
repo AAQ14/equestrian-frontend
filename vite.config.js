@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+const USER = 'http://127.0.0.1:8081';
+const BOOKING = 'http://127.0.0.1:8082';
+const TOURNAMENT = 'http://127.0.0.1:8083';
+const NOTIFICATION = 'http://127.0.0.1:8084';
+
 // The dev server forwards /api and /auth calls to Spring Boot on port 8000.
 // The browser only talks to localhost:5173, so the backend needs NO CORS config.
 export default defineConfig({
@@ -8,8 +13,27 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': 'http://localhost:8000',
-      '/auth': 'http://localhost:8000',
+      // user-service
+      '/auth': USER,
+      '/api/users': USER,
+
+      // booking-service
+      '/api/bookings': BOOKING,
+      '/api/sessions': BOOKING,
+      '/api/horses': BOOKING,
+      '/api/horseAssignments': BOOKING,
+      '/api/instructors': BOOKING,
+      '/api/comments': BOOKING,
+      '/api/seats': TOURNAMENT,
+      '/uploads': BOOKING,
+
+      // tournament-service
+      '/api/tournaments': TOURNAMENT,
+      '/api/tickets': TOURNAMENT,
+
+      // notification-service (SSE works through the proxy too)
+      '/api/notifications': NOTIFICATION,
+      '/api/audit-logs': NOTIFICATION,
     },
   },
 });

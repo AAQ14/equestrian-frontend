@@ -9,8 +9,8 @@ import AuthLayout from './AuthLayout';
 // Seeded accounts from DataSeeder.java (all use Password123!). Only for the demo.
 const DEMO_ACCOUNTS = [
   { label: 'Admin', email: 'admin@equestrian.com' },
-  { label: 'Instructor', email: 'layla@equestrian.com' },
-  { label: 'Client', email: 'sara@equestrian.com' },
+  { label: 'Instructor', email: 'instructor1@equestrian.com' },
+  { label: 'Client', email: 'client1@equestrian.com' },
 ];
 
 // Where each role lands after logging in.
